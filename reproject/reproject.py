@@ -48,6 +48,10 @@ def reproject(hdu_in, header_out):
 
     x_pix_out, y_pix_out = np.meshgrid(x, y)
 
+    # Check that the coordinate systems are the same
+    if wcs_in.wcs.ctype != wcs_out.wcs.ctype:
+        raise NotImplementedError("Conversion between different coordinate systems has not yet been implemented.")
+
     x_world_out, y_world_out = wcs_out.wcs_pix2world(x_pix_out, y_pix_out, 0)
 
     # Finally, compute the pixel positions in the *output* image of the pixels
