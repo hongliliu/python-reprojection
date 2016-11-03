@@ -1,7 +1,9 @@
 0.4 (unreleased)
 ----------------
 
-- No changes yet.
+- Added the ability to specify an output array in ``reproject_interp``, which
+  permits the use of memory-mapped arrays and therefore provides the capability
+  to handle data cubes much larger than memory (#115)
 
 0.3.1 (2016-07-07)
 ------------------
