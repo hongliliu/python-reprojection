@@ -16,6 +16,9 @@ def parse_input_data(input_data, hdu_in=None):
     elif isinstance(input_data, HDUList):
         if len(input_data) > 1 and hdu_in is None:
             raise ValueError("More than one HDU is present, please specify HDU to use with ``hdu_in=`` option")
+        elif hdu_in is None:
+            # if the length of the hdu_list is <=1, there's only 1 hdu, so index with [0]
+            hdu_in = 0
         return parse_input_data(input_data[hdu_in])
     elif isinstance(input_data, (PrimaryHDU, ImageHDU, CompImageHDU)):
         return input_data.data, WCS(input_data.header)
